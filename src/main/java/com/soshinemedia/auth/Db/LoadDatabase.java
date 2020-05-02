@@ -1,7 +1,7 @@
 package com.soshinemedia.auth.Db;
 
-import com.soshinemedia.auth.Model.User;
-import com.soshinemedia.auth.Repository.UserRepository;
+import com.soshinemedia.auth.model.User;
+import com.soshinemedia.auth.repository.UserRepository;
 
 import lombok.extern.slf4j.Slf4j;
 

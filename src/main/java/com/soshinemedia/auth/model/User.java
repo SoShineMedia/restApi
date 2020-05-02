@@ -1,4 +1,4 @@
-package com.soshinemedia.auth.Model;
+package com.soshinemedia.auth.model;
 
 
 import lombok.Data;
