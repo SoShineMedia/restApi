@@ -1,7 +1,9 @@
 package com.soshinemedia.auth;
 
+import com.soshinemedia.auth.domain.Firm;
 import com.soshinemedia.auth.domain.User;
 import com.soshinemedia.auth.domain.Vehicle;
+import com.soshinemedia.auth.repository.FirmRepository;
 import com.soshinemedia.auth.repository.UserRepository;
 import com.soshinemedia.auth.repository.VehicleRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +13,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import javax.persistence.Column;
 import java.util.Arrays;
 
 @Component
@@ -24,6 +27,9 @@ public class DataInitializer implements CommandLineRunner {
     UserRepository users;
 
     @Autowired
+    FirmRepository firms;
+
+    @Autowired
     PasswordEncoder passwordEncoder;
 
     @Override
@@ -33,6 +39,21 @@ public class DataInitializer implements CommandLineRunner {
 
         log.debug("printing all vehicles...");
         this.vehicles.findAll().forEach(v -> log.debug(" Vehicle :" + v.toString()));
+
+        log.debug("initializing firms data...");
+        Arrays.asList("moto", "car").forEach(v -> this.firms.saveAndFlush(
+                Firm.builder()
+                        .name(v)
+                        .company_number("sample_1")
+                        .registered_address("address_first")
+                        .address("jsdhfjhsd")
+                        .email("when@why.com")
+                        .telephone("211434235423")
+                        .website("www.php.com")
+                        .build()));
+
+        log.debug("printing all firms...");
+        //this.firms.findAll().forEach(v -> log.debug(" Firm :" + v.toString()));
 
         this.users.save(User.builder()
             .username("user")

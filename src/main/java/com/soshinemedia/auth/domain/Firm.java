@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "firms")
@@ -36,7 +37,7 @@ public class Firm extends AbstractAuditableEntity<User, Long> implements Seriali
     private String website;
     //private Link[] social;
 
-
-
+    @OneToMany(mappedBy = "firm")
+    private List<Case> cases;
 
 }
