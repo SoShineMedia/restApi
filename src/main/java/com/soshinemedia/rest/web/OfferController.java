@@ -1,34 +1,40 @@
 package com.soshinemedia.rest.web;
 
-import com.soshinemedia.rest.domain.Case;
-import com.soshinemedia.rest.repository.CaseRepository;
+import com.soshinemedia.rest.Service.OfferService;
+import com.soshinemedia.rest.domain.Acceptance;
+import com.soshinemedia.rest.domain.Offer;
+import com.soshinemedia.rest.repository.AcceptanceRepository;
+import com.soshinemedia.rest.repository.OfferRepository;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
-@RequestMapping("/v1/cases")
+@RequestMapping("/v1")
+
 public class OfferController {
 
-    private CaseRepository cases;
+    private OfferService offer;
+    private AcceptanceRepository acceptances;
 
-    public OfferController(CaseRepository cases) {
-        this.cases = cases;
+    public OfferController(AcceptanceRepository acceptances) {
+        this.acceptances = acceptances;
     }
 
-    @GetMapping("")
-    public ResponseEntity<List<Case>> all(@RequestParam(name = "brand", required = false) String[] brands) {
-        if (brands == null || brands.length == 0) {
-            return ok(this.cases.findAll());
-        } else {
-
-            return ok(this.cases.findAll());
-        }
+    @GetMapping("/offers")
+    public ResponseEntity<List<Offer>> all(@RequestParam(name = "brand", required = false) String[] brands) {
+            return ok(this.offer.findAll());
     }
+
+    @GetMapping("/offers/{id}/acceptances")
+    public ResponseEntity<List<Acceptance>> getAcceptances(@PathVariable("id") Long id, @RequestParam(name = "brand", required = false) String[] brands) {
+
+            return ok(this.offer.findAllAcceptances());
+
+    }
+
+
 }

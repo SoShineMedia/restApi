@@ -16,8 +16,7 @@ import static org.springframework.http.ResponseEntity.ok;
 @RestController()
 public class UserinfoController {
 
-    @SuppressWarnings("rawtypes")
-	@GetMapping("/me")
+	@GetMapping("/v1/user")
     public ResponseEntity currentUser(@AuthenticationPrincipal UserDetails userDetails){
         Map<Object, Object> model = new HashMap<>();
         model.put("username", userDetails.getUsername());
@@ -25,6 +24,66 @@ public class UserinfoController {
             .stream()
             .map(a -> ((GrantedAuthority) a).getAuthority())
             .collect(toList())
+        );
+        return ok(model);
+    }
+
+    @GetMapping("/v1/user/logs")
+    public ResponseEntity userLogs(@AuthenticationPrincipal UserDetails userDetails){
+        Map<Object, Object> model = new HashMap<>();
+        model.put("username", userDetails.getUsername());
+        model.put("roles", userDetails.getAuthorities()
+                .stream()
+                .map(a -> ((GrantedAuthority) a).getAuthority())
+                .collect(toList())
+        );
+        return ok(model);
+    }
+
+    @GetMapping("/v1/user/transactions")
+    public ResponseEntity userTransactions(@AuthenticationPrincipal UserDetails userDetails){
+        Map<Object, Object> model = new HashMap<>();
+        model.put("username", userDetails.getUsername());
+        model.put("roles", userDetails.getAuthorities()
+                .stream()
+                .map(a -> ((GrantedAuthority) a).getAuthority())
+                .collect(toList())
+        );
+        return ok(model);
+    }
+
+    @GetMapping("/v1/user/exchanges")
+    public ResponseEntity userExchanges(@AuthenticationPrincipal UserDetails userDetails){
+        Map<Object, Object> model = new HashMap<>();
+        model.put("username", userDetails.getUsername());
+        model.put("roles", userDetails.getAuthorities()
+                .stream()
+                .map(a -> ((GrantedAuthority) a).getAuthority())
+                .collect(toList())
+        );
+        return ok(model);
+    }
+
+    @GetMapping("/v1/user/offers")
+    public ResponseEntity userOffers(@AuthenticationPrincipal UserDetails userDetails){
+        Map<Object, Object> model = new HashMap<>();
+        model.put("username", userDetails.getUsername());
+        model.put("roles", userDetails.getAuthorities()
+                .stream()
+                .map(a -> ((GrantedAuthority) a).getAuthority())
+                .collect(toList())
+        );
+        return ok(model);
+    }
+
+    @GetMapping("/v1/user/acceptances")
+    public ResponseEntity userAcceptances(@AuthenticationPrincipal UserDetails userDetails){
+        Map<Object, Object> model = new HashMap<>();
+        model.put("username", userDetails.getUsername());
+        model.put("roles", userDetails.getAuthorities()
+                .stream()
+                .map(a -> ((GrantedAuthority) a).getAuthority())
+                .collect(toList())
         );
         return ok(model);
     }

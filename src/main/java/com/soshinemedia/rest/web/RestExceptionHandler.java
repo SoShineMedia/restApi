@@ -15,9 +15,9 @@ import static org.springframework.http.ResponseEntity.status;
 @Slf4j
 public class RestExceptionHandler {
 
-    @ExceptionHandler(value = {VehicleNotFoundException.class})
-    public ResponseEntity vehicleNotFound(VehicleNotFoundException ex, WebRequest request) {
-        log.debug("handling VehicleNotFoundException...");
+    @ExceptionHandler(value = {NotFoundException.class})
+    public ResponseEntity EntityNotFound(NotFoundException ex, WebRequest request) {
+        log.debug("handling Not Found Exception...");
         return notFound().build();
     }
 

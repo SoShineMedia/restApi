@@ -1,4 +1,4 @@
 package com.soshinemedia.rest.web;
 
-public class ExchangeController {
+public class QRcodeController {
 }

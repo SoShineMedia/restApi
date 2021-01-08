@@ -1,11 +1,7 @@
 package com.soshinemedia.rest;
 
-import com.soshinemedia.rest.domain.Firm;
 import com.soshinemedia.rest.domain.User;
-import com.soshinemedia.rest.domain.Vehicle;
-import com.soshinemedia.rest.repository.FirmRepository;
 import com.soshinemedia.rest.repository.UserRepository;
-import com.soshinemedia.rest.repository.VehicleRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -19,14 +15,14 @@ import java.util.Arrays;
 @Slf4j
 public class DataInitializer implements CommandLineRunner {
 
-    @Autowired
-    VehicleRepository vehicles;
+    //@Autowired
+    //VehicleRepository vehicles;
 
     @Autowired
     UserRepository users;
 
-    @Autowired
-    FirmRepository firms;
+    //@Autowired
+    //FirmRepository firms;
 
     @Autowired
     PasswordEncoder passwordEncoder;
@@ -34,12 +30,13 @@ public class DataInitializer implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         log.debug("initializing vehicles data...");
-        Arrays.asList("moto", "car").forEach(v -> this.vehicles.saveAndFlush(Vehicle.builder().name(v).build()));
+        //Arrays.asList("moto", "car").forEach(v -> this.vehicles.saveAndFlush(Vehicle.builder().name(v).build()));
 
         log.debug("printing all vehicles...");
-        this.vehicles.findAll().forEach(v -> log.debug(" Vehicle :" + v.toString()));
+        //this.vehicles.findAll().forEach(v -> log.debug(" Vehicle :" + v.toString()));
 
         log.debug("initializing firms data...");
+ /*
         Arrays.asList("moto", "car").forEach(v -> this.firms.saveAndFlush(
                 Firm.builder()
                         .name(v)
@@ -51,6 +48,7 @@ public class DataInitializer implements CommandLineRunner {
                         .website("www.php.com")
                         .build()));
 
+*/
         log.debug("printing all firms...");
         //this.firms.findAll().forEach(v -> log.debug(" Firm :" + v.toString()));
 

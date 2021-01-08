@@ -1,8 +1,10 @@
 package com.soshinemedia.rest.web;
 
+import com.soshinemedia.rest.Service.ExchangeRateService;
 import com.soshinemedia.rest.domain.Brand;
-import com.soshinemedia.rest.domain.Vehicle;
-import com.soshinemedia.rest.repository.VehicleRepository;
+import com.soshinemedia.rest.domain.ExchangeRate;
+import com.soshinemedia.rest.domain.Offer;
+import com.soshinemedia.rest.repository.ExchangeRateRepository;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -11,69 +13,36 @@ import javax.servlet.http.HttpServletRequest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.springframework.http.ResponseEntity.created;
 import static org.springframework.http.ResponseEntity.noContent;
 import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
-@RequestMapping("/v1/vehicles")
+@RequestMapping("/v1/rates")
 public class ExchangeRateController {
 
-    private VehicleRepository vehicles;
+    private ExchangeRateService exchangeRates;
 
-    public ExchangeRateController(VehicleRepository vehicles) {
-        this.vehicles = vehicles;
-    }
+    //public ExchangeRateController(ExchangeRateRepository exchangeRates) {
+    //    this.exchangeRates = exchangeRates;
+    //}
 
 
-    @GetMapping("")
-    public ResponseEntity<List<Vehicle>> all(@RequestParam(name = "brand", required = false) String[] brands) {
-        if (brands == null || brands.length == 0) {
-            return ok(this.vehicles.findAll());
-        } else {
-            List<Brand> brandList = new ArrayList<Brand>();
-            for (String brand : brands) {
-                brandList.add(Brand.valueOf(brand.toUpperCase()));
-            }
-            return ok(this.vehicles.findByBrandIn(brandList));
-        }
-
-    }
-
-    @SuppressWarnings("rawtypes")
-    @PostMapping("")
-    public ResponseEntity save(@RequestBody VehicleForm form, HttpServletRequest request) {
-        Vehicle saved = this.vehicles.save(Vehicle.builder().name(form.getName()).build());
-        return created(
-                ServletUriComponentsBuilder
-                        .fromContextPath(request)
-                        .path("/v1/vehicles/{id}")
-                        .buildAndExpand(saved.getId())
-                        .toUri())
-                .build();
-    }
+    //@GetMapping("")
+    /*public ResponseEntity<List<ExchangeRate>> all(@RequestParam(name = "brand", required = false) String[] brands) {
+        return ok(this.exchangeRates.findAll());
+    }*/
 
     @GetMapping("/{id}")
-    public ResponseEntity<Vehicle> get(@PathVariable("id") Long id) {
-        return ok(this.vehicles.findById(id).orElseThrow(() -> new VehicleNotFoundException()));
+    public ResponseEntity<ExchangeRate> get(@PathVariable("id") Long id) {
+        //return ok(this.exchangeRates.findById(id));
+        ExchangeRate n = new ExchangeRate();
+        return ok(n);
     }
-
-    @SuppressWarnings("rawtypes")
-    @PutMapping("/{id}")
-    public ResponseEntity update(@PathVariable("id") Long id, @RequestBody VehicleForm form) {
-        Vehicle existed = this.vehicles.findById(id).orElseThrow(() -> new VehicleNotFoundException());
-        existed.setName(form.getName());
-
-        this.vehicles.save(existed);
-        return noContent().build();
-    }
-
-    @SuppressWarnings("rawtypes")
-    @DeleteMapping("/{id}")
-    public ResponseEntity delete(@PathVariable("id") Long id) {
-        Vehicle existed = this.vehicles.findById(id).orElseThrow(() -> new VehicleNotFoundException());
-        this.vehicles.delete(existed);
-        return noContent().build();
+    @GetMapping("")
+    public ResponseEntity<List<Optional<ExchangeRate>>> all() {
+        return ok(this.exchangeRates.findAll());
     }
 }

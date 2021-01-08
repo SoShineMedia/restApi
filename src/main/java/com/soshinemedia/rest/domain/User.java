@@ -33,6 +33,14 @@ public class User implements UserDetails {
     @NotEmpty
     private String password;
 
+    @OneToOne(mappedBy="user")
+    private Profile profile;
+
+    /*@ElementCollection(fetch = FetchType.EAGER)
+    @Builder.Default
+    @OneToMany(mappedBy = "user")
+    private List<UserLog> logs = new ArrayList<>();*/
+
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
     private List<String> roles = new ArrayList<>();
