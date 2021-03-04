@@ -48,4 +48,52 @@ public class AuthenticationController {
             throw new BadCredentialsException("Invalid username/password supplied");
         }
     }
+    @PostMapping("/signout")
+    public ResponseEntity signout(@RequestBody AuthenticationRequest data) {
+
+        try {
+            String username = data.getUsername();
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, data.getPassword()));
+            String token = jwtTokenProvider.createToken(username, this.users.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username " + username + "not found")).getRoles());
+
+            Map<Object, Object> model = new HashMap<>();
+            model.put("username", username);
+            model.put("token", token);
+            return ok(model);
+        } catch (AuthenticationException e) {
+            throw new BadCredentialsException("Invalid username/password supplied");
+        }
+    }
+    @PostMapping("/register")
+    public ResponseEntity register(@RequestBody AuthenticationRequest data) {
+
+        try {
+            String username = data.getUsername();
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, data.getPassword()));
+            String token = jwtTokenProvider.createToken(username, this.users.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username " + username + "not found")).getRoles());
+
+            Map<Object, Object> model = new HashMap<>();
+            model.put("username", username);
+            model.put("token", token);
+            return ok(model);
+        } catch (AuthenticationException e) {
+            throw new BadCredentialsException("Invalid username/password supplied");
+        }
+    }
+    @PostMapping("/deregister")
+    public ResponseEntity deregister(@RequestBody AuthenticationRequest data) {
+
+        try {
+            String username = data.getUsername();
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, data.getPassword()));
+            String token = jwtTokenProvider.createToken(username, this.users.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException("Username " + username + "not found")).getRoles());
+
+            Map<Object, Object> model = new HashMap<>();
+            model.put("username", username);
+            model.put("token", token);
+            return ok(model);
+        } catch (AuthenticationException e) {
+            throw new BadCredentialsException("Invalid username/password supplied");
+        }
+    }
 }

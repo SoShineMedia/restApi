@@ -16,5 +16,4 @@ package com.soshinemedia.rest.web;
 @RequestMapping("/v1/analytics")
 public class AnalyticsController {
 
-
 }

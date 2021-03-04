@@ -5,11 +5,13 @@ import com.soshinemedia.rest.domain.Offer;
 
 import com.soshinemedia.rest.repository.AcceptanceRepository;
 import com.soshinemedia.rest.repository.OfferRepository;
+import com.soshinemedia.rest.web.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OfferService {
@@ -39,8 +41,19 @@ public class OfferService {
         return acceptances;
     }
 
-    public void deleteById(Long userId) {
+    public Offer save(Offer offer){
+        return offerRepository.save(offer);
+    }
 
-        //userRepository.deleteById(userId);
+    public Optional<Offer> findById(Long id){
+        Optional<Offer> offer = offerRepository.findById(id);
+
+        //if (!offer.isPresent())
+        //    throw new NotFoundException("id-" + id);
+
+        return offer;
+    }
+    public void delete(Long id) {
+        offerRepository.deleteById(id);
     }
 }

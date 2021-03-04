@@ -33,7 +33,7 @@ public class User implements UserDetails {
     @NotEmpty
     private String password;
 
-    @OneToOne(mappedBy="user")
+    @OneToOne
     private Profile profile;
 
     /*@ElementCollection(fetch = FetchType.EAGER)

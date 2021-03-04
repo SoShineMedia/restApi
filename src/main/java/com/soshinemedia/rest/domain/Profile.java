@@ -24,6 +24,7 @@ public class Profile {
     private String sec_hash;
     private long cell_num;
     private String qr_code;
+    private String account_number;
     private Timestamp dob;
     private Timestamp created_at;
     private Timestamp updated_at;
