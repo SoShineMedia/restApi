@@ -2,23 +2,23 @@ package com.soshinemedia.rest.domain;
 
 //import org.springframework.data.annotation.Id;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigInteger;
 import java.sql.Timestamp;
 
 @Entity
 @Table(name="Profiles")
-@Data
+//@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+//@RequiredArgsConstructor
 public class Profile {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
     private long id;
 
     private String sec_hash;
@@ -31,6 +31,13 @@ public class Profile {
 
     private float balance;
 
-    @OneToOne
+    @OneToOne(mappedBy = "profile")
     private User user;
+
+    public Profile(String publicKey, String path) {
+
+        this.account_number = publicKey;
+        this.qr_code = path;
+
+    }
 }

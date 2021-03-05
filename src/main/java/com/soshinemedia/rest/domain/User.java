@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -33,8 +34,11 @@ public class User implements UserDetails {
     @NotEmpty
     private String password;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL) @JoinColumn( name = "profile_id" )
     private Profile profile;
+
+    @Column
+    private String keyHash;
 
     /*@ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default

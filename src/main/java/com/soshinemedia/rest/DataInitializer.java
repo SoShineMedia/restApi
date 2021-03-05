@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.math.BigInteger;
 import java.util.Arrays;
 
 @Component
@@ -52,19 +53,20 @@ public class DataInitializer implements CommandLineRunner {
         log.debug("printing all firms...");
         //this.firms.findAll().forEach(v -> log.debug(" Firm :" + v.toString()));
 
-        this.users.save(User.builder()
+        /*this.users.save(User.builder()
             .username("user")
             .password(this.passwordEncoder.encode("password"))
-            .roles(Arrays.asList( "ROLE_USER"))
+                .key(new BigInteger("1"))
+                .roles(Arrays.asList( "ROLE_USER"))
             .build()
         );
 
         this.users.save(User.builder()
             .username("admin")
             .password(this.passwordEncoder.encode("password"))
-            .roles(Arrays.asList("ROLE_USER", "ROLE_ADMIN"))
+            .key(new BigInteger("1")).roles(Arrays.asList("ROLE_USER", "ROLE_ADMIN"))
             .build()
-        );
+        );*/
 
         log.debug("printing all users...");
         this.users.findAll().forEach(v -> log.debug(" User :" + v.toString()));
