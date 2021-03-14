@@ -1,9 +1,6 @@
 package com.soshinemedia.rest.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -17,12 +14,18 @@ import java.sql.Timestamp;
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Getter
     private long id;
 
-
+    @Getter @Setter
     private TransactionType type;
+    @Getter @Setter
     private String description;
-
+    @Getter @Setter
+    private float amount;
+    @Getter @Setter
+    private float value;
+    @Getter @Setter
     private Timestamp created_at;
 
     @ManyToOne
