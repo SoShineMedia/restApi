@@ -73,6 +73,8 @@ public class AuthenticationController {
     public ResponseEntity register(@RequestBody AuthenticationRequest data) {
         String username = data.getUsername();
         String password = data.getPassword();
+        String name = data.getName();
+        String uuid = data.getUuid();
         BigInteger privateKey;
         String publicKey;
         String filename = new Date().getTime() + "_" + "qr.png";
@@ -105,7 +107,7 @@ public class AuthenticationController {
                             .keyHash(privateKey.toString(16))
                             .password(this.passwordEncoder.encode(password))
                             .roles(Arrays.asList( "ROLE_USER"))
-                            .profile(new Profile(publicKey,"/qr/"+filepath))
+                            .profile(new Profile(publicKey,"/qr/"+filepath,name,uuid))
                             .build()
                     );
                 } catch (InvalidAlgorithmParameterException e) {

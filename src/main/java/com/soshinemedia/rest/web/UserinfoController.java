@@ -49,15 +49,14 @@ public class UserinfoController {
     @PostMapping("/v1/user")
     public ResponseEntity<Object> update(@AuthenticationPrincipal UserDetails userDetails, @RequestBody Profile form) {
 
-        Optional<Offer> offerOptional = this.Offer.findById(id);
+        Optional<Profile> profileOptional = this.profile.findById(form.getId());
 
-        if (!offerOptional.isPresent())
+        if (!profileOptional.isPresent())
             return ResponseEntity.notFound().build();
 
-        form.setId(id);
+        //form.setId(form.id);
 
-
-        this.Offer.save(form);
+        this.profile.save(form);
         return ResponseEntity.noContent().build();
     }
 
