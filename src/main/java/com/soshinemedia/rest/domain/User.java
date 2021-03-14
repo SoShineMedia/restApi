@@ -4,13 +4,14 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 
 @Entity
+@Component
 @Table(name="users")
 @Data
 @Builder
@@ -33,6 +35,7 @@ public class User implements UserDetails {
 
     @NotEmpty
     private String password;
+
 
     @OneToOne(cascade = CascadeType.ALL) @JoinColumn( name = "profile_id" )
     private Profile profile;
@@ -62,6 +65,10 @@ public class User implements UserDetails {
     @Override
     public String getUsername() {
         return this.username;
+    }
+
+    public Long getId() {
+        return this.id;
     }
 
     @Override

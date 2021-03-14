@@ -75,8 +75,10 @@ public class AuthenticationController {
         String password = data.getPassword();
         BigInteger privateKey;
         String publicKey;
-        String filename = new Date().getTime() + "-" + "qr.png";
-
+        String filename = new Date().getTime() + "_" + "qr.png";
+        //create env variable
+        //file:///C:/Users/KenroyWhite/Downloads/2021-03-02-778%20(1).html
+        String filepath = null;// = "/qr/"+filename;
 
         try {
            Optional usr = this.users.findByUsername(username);
@@ -88,9 +90,10 @@ public class AuthenticationController {
 
                     try {
                         BufferedImage bi = generateQRCodeImage(publicKey);  // retrieve image
-
-                        File outputfile = new File(filename);
+                        filepath = publicKey+"_"+filename;
+                        File outputfile = new File(filepath);
                         ImageIO.write(bi, "png", outputfile);
+
                     } catch (IOException e) {
                         // handle exception
                     } catch (Exception e) {
@@ -102,7 +105,7 @@ public class AuthenticationController {
                             .keyHash(privateKey.toString(16))
                             .password(this.passwordEncoder.encode(password))
                             .roles(Arrays.asList( "ROLE_USER"))
-                            .profile(new Profile(publicKey,filename))
+                            .profile(new Profile(publicKey,"/qr/"+filepath))
                             .build()
                     );
                 } catch (InvalidAlgorithmParameterException e) {

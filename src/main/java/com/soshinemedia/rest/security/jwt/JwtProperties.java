@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
 @Data
 public class JwtProperties {
 
-	private String secretKey = "secret";
+	private String secretKey = "AB54A98D34A3EE0B";
 
 	//validity in milliseconds
-	private long validityInMs = 3600000; // 1h
+	private long validityInMs = 3600000 * 3; // 1h
 }
