@@ -1,6 +1,8 @@
 package com.soshinemedia.rest;
 
+import com.soshinemedia.rest.domain.Profile;
 import com.soshinemedia.rest.domain.User;
+import com.soshinemedia.rest.repository.ProfileRepository;
 import com.soshinemedia.rest.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +18,8 @@ import java.util.Arrays;
 @Slf4j
 public class DataInitializer implements CommandLineRunner {
 
-    //@Autowired
-    //VehicleRepository vehicles;
+    @Autowired
+    ProfileRepository profile;
 
     @Autowired
     UserRepository users;
@@ -59,14 +61,20 @@ public class DataInitializer implements CommandLineRunner {
                 .key(new BigInteger("1"))
                 .roles(Arrays.asList( "ROLE_USER"))
             .build()
-        );
-
-        this.users.save(User.builder()
-            .username("admin")
-            .password(this.passwordEncoder.encode("password"))
-            .key(new BigInteger("1")).roles(Arrays.asList("ROLE_USER", "ROLE_ADMIN"))
-            .build()
         );*/
+
+        this.profile.save(Profile.builder()
+            .name("reservePrimary")
+            .accountNumber("0x9ac156723119abb98183b4e6f02a87b7a7115b31")
+            .balance(500000000)
+            .build()
+        );
+        this.profile.save(Profile.builder()
+                .name("reserveSecondary")
+                .accountNumber("0xe352E36fD228ddaeA0c28F1Af26d62264b03ac4f")
+                .balance(500000000)
+                .build()
+        );
 
         log.debug("printing all users...");
         this.users.findAll().forEach(v -> log.debug(" User :" + v.toString()));

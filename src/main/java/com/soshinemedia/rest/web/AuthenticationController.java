@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.web3j.crypto.Credentials;
 import org.web3j.crypto.ECKeyPair;
 import org.web3j.crypto.Keys;
 import org.web3j.protocol.Web3j;
@@ -89,10 +90,13 @@ public class AuthenticationController {
                     ECKeyPair keyPair = Keys.createEcKeyPair();
                     privateKey = keyPair.getPrivateKey();
                     publicKey = keyPair.getPublicKey().toString(16);
+                    Credentials cs = Credentials.create(privateKey.toString());
+
+                    String address = cs.getAddress();
 
                     try {
-                        BufferedImage bi = generateQRCodeImage(publicKey);  // retrieve image
-                        filepath = publicKey+"_"+filename;
+                        BufferedImage bi = generateQRCodeImage(address);  // retrieve image
+                        filepath = address+"_"+filename;
                         File outputfile = new File(filepath);
                         ImageIO.write(bi, "png", outputfile);
 
@@ -107,7 +111,7 @@ public class AuthenticationController {
                             .keyHash(privateKey.toString(16))
                             .password(this.passwordEncoder.encode(password))
                             .roles(Arrays.asList( "ROLE_USER"))
-                            .profile(new Profile(publicKey,"/qr/"+filepath,name,uuid))
+                            .profile(new Profile(address, String.format("/qr/%s", filepath), name, uuid))
                             .build()
                     );
                 } catch (InvalidAlgorithmParameterException e) {

@@ -1,9 +1,6 @@
 package com.soshinemedia.rest.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -36,7 +33,7 @@ public class User implements UserDetails {
     @NotEmpty
     private String password;
 
-
+    @Getter
     @OneToOne(cascade = CascadeType.ALL) @JoinColumn( name = "profile_id" )
     private Profile profile;
 

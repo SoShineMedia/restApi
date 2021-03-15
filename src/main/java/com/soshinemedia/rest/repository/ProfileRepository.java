@@ -18,5 +18,9 @@ public interface ProfileRepository extends JpaRepository<Profile, Long> {
 
     Optional<Profile> findByBalance(Float id );
 
+    Optional<Profile> findByAccountNumber(String num );
+
+    //Optional<Profile> findByAccountNumber(String address);
+
 
 }

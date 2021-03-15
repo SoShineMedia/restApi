@@ -26,13 +26,13 @@ public class Transaction {
     @Getter @Setter
     private float value;
     @Getter @Setter
-    private Timestamp created_at;
+    private Timestamp createdAt;
 
-    @ManyToOne
-    @JoinColumn(name="from_id")
-    private Profile from;
+    @Getter @Setter
+    private String fromAddress;
 
-    @ManyToOne
-    @JoinColumn(name="to_id")
-    private Profile to;
+    @Getter @Setter
+    private String toAddress;
+
+
 }

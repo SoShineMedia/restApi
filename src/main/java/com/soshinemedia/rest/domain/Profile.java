@@ -30,29 +30,35 @@ public class Profile {
     @Getter @Setter
     private String uuid;
     @Getter @Setter
-    private long cell_num;
+    private long cellNum;
     @Getter @Setter
-    private String qr_code;
+    private String qrCode;
     @Getter @Setter
-    private String account_number;
+    private String accountNumber;
     @Getter @Setter
-    private float bank_account_number;
+    private float bankAccountNumber;
     @Getter @Setter
     private float balance;
     @Getter @Setter
-    private Timestamp created_at;
+    private float cash;
+    @Getter @Setter
+    private Timestamp createdAt;
     @LastModifiedDate
     private LocalDate lastModifiedDate;
     @Getter @Setter
-    private Timestamp updated_at;
+    private Timestamp updatedAt;
 
     @OneToOne(mappedBy = "profile")
     private User user;
 
-    public Profile(String publicKey, String path, String name, String uuid) {
-        this.account_number = publicKey;
-        this.qr_code = path;
+    public Profile(String address, String format, String name, String uuid) {
+        this.accountNumber = address;
+        this.qrCode = format;
         this.name = name;
         this.uuid = uuid;
+    }
+
+    public void Profile(){
+
     }
 }
