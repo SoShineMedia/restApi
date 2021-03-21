@@ -11,8 +11,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.Optional;
 
 @Component
 @Slf4j
@@ -62,19 +64,21 @@ public class DataInitializer implements CommandLineRunner {
                 .roles(Arrays.asList( "ROLE_USER"))
             .build()
         );*/
-
-        this.profile.save(Profile.builder()
-            .name("reservePrimary")
-            .accountNumber("0x9ac156723119abb98183b4e6f02a87b7a7115b31")
-            .balance(500000000)
-            .build()
-        );
-        this.profile.save(Profile.builder()
-                .name("reserveSecondary")
-                .accountNumber("0xe352E36fD228ddaeA0c28F1Af26d62264b03ac4f")
-                .balance(500000000)
-                .build()
-        );
+        Optional<Profile> profile = this.profile.findByAccountNumber("0x9ac156723119abb98183b4e6f02a87b7a7115b31");
+        if(!profile.isPresent()){
+            this.profile.save(Profile.builder()
+                    .name("reservePrimary")
+                    .accountNumber("0x9ac156723119abb98183b4e6f02a87b7a7115b31")
+                    .balance(new BigDecimal(50000000))
+                    .build()
+            );
+            this.profile.save(Profile.builder()
+                    .name("reserveSecondary")
+                    .accountNumber("0xe352E36fD228ddaeA0c28F1Af26d62264b03ac4f")
+                    .balance(new BigDecimal(50000000))
+                    .build()
+            );
+        }
 
         log.debug("printing all users...");
         this.users.findAll().forEach(v -> log.debug(" User :" + v.toString()));

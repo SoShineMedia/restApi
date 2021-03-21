@@ -7,6 +7,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.time.LocalDate;
@@ -36,11 +37,11 @@ public class Profile {
     @Getter @Setter
     private String accountNumber;
     @Getter @Setter
-    private float bankAccountNumber;
+    private String bankAccountNumber;
     @Getter @Setter
-    private float balance;
+    private BigDecimal balance;
     @Getter @Setter
-    private float cash;
+    private BigDecimal cash;
     @Getter @Setter
     private Timestamp createdAt;
     @LastModifiedDate

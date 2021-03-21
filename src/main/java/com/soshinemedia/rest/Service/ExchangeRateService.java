@@ -10,13 +10,5 @@ import java.util.Optional;
 
 public class ExchangeRateService {
     private ExchangeRateRepository exchangeRateRepository;
-    public List <Optional<ExchangeRate>> findAll() {
 
-        List <Optional<ExchangeRate>> it = exchangeRateRepository.findAll();
-
-        return it;
-    }
-    /*public  <Optional<ExchangeRate>> findById(Long id) {
-        return {};
-    }*/
 }

@@ -3,6 +3,7 @@ package com.soshinemedia.rest.domain;
 import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 @Entity
@@ -20,11 +21,13 @@ public class Transaction {
     @Getter @Setter
     private TransactionType type;
     @Getter @Setter
+    private TransactionStatus status;
+    @Getter @Setter
     private String description;
     @Getter @Setter
-    private float amount;
+    private BigDecimal amount;
     @Getter @Setter
-    private float value;
+    private BigDecimal value;
     @Getter @Setter
     private Timestamp createdAt;
 

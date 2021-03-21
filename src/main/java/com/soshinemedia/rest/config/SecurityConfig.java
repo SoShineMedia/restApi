@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         //@formatter:off
         http
-
+                .cors().and()
                 .httpBasic().disable()
             .csrf().disable()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/vehicles/**").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/vehicles/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/v1/offers/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/v1/lawfirms/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/v1/**").permitAll()
                 .antMatchers(HttpMethod.GET, "/swagger-ui/**", "/v3/api-docs/**").permitAll()///swagger-ui.html
                 .antMatchers(HttpMethod.GET, "/swagger-ui.html").permitAll()
                 .anyRequest().authenticated()

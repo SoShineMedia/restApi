@@ -42,7 +42,7 @@ public class ExchangeRateController {
         return ok(n);
     }
     @GetMapping("")
-    public ResponseEntity<List<Optional<ExchangeRate>>> all() {
-        return ok(this.exchangeRates.findAll());
+    public ResponseEntity all() {
+        return ok("success");
     }
 }

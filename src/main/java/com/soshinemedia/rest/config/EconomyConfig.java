@@ -2,13 +2,22 @@ package com.soshinemedia.rest.config;
 
 import com.soshinemedia.rest.domain.Profile;
 import com.soshinemedia.rest.repository.ProfileRepository;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.context.annotation.Configuration;
 
+import java.math.BigDecimal;
 import java.util.Optional;
-
+@Configuration
 public class EconomyConfig {
-    private int totalPoints;
-    private String reserve1;
-    private String reserve2;
+    @Setter @Getter
+    private BigDecimal totalPoints;
+
+    @Setter @Getter
+    private String primaryReserve;
+    @Setter @Getter
+    private String secondaryReserve;
+
     private ProfileRepository account;
 
 
@@ -29,9 +38,9 @@ public class EconomyConfig {
     }*/
 
     EconomyConfig(){
-        this.totalPoints = 1000000000;
-        this.reserve1 = "0x9ac156723119abb98183b4e6f02a87b7a7115b31";
-        this.reserve2 = "0xe352E36fD228ddaeA0c28F1Af26d62264b03ac4f";
+        this.totalPoints = new BigDecimal(100000000);
+        this.primaryReserve = "0x9ac156723119abb98183b4e6f02a87b7a7115b31";
+        this.secondaryReserve = "0xe352E36fD228ddaeA0c28F1Af26d62264b03ac4f";
 
     }
 }

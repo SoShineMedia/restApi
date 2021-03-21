@@ -1,11 +1,9 @@
 package com.soshinemedia.rest.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 @Entity
 @Table(name="exchange_rates")
@@ -18,8 +16,9 @@ public class ExchangeRate {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    private float value;
-
-    private Timestamp created_at;
+    @Getter @Setter
+    private BigDecimal value;
+    @Getter @Setter
+    private Timestamp createdAt;
 
 }
