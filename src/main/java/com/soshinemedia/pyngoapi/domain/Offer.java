@@ -34,7 +34,7 @@ public class Offer {
     @Column
     private Boolean pin;
     @Column
-    private float duration;
+    private long duration;
     @Column
     private float reward;
     @Column

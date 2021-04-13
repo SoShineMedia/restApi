@@ -6,14 +6,19 @@ import com.soshinemedia.pyngoapi.domain.Acceptance;
 import com.soshinemedia.pyngoapi.domain.Offer;
 import com.soshinemedia.pyngoapi.repository.AcceptanceRepository;
 import com.soshinemedia.pyngoapi.repository.OfferRepository;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.modelmapper.ModelMapper;
 
+import java.math.BigInteger;
 import java.net.URI;
+import java.sql.Timestamp;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 import java.util.Optional;
@@ -103,8 +108,17 @@ public class OfferController {
     }*/
     private OfferDTO convertToDto(Offer post) {
         OfferDTO postDto = modelMapper.map(post, OfferDTO.class);
+        postDto.setIsaccepted(false);
+        postDto.setIsacceptable(false);
+
+        //TODO : verify that the time value accounts for timezones
+        Date date = new Date();
+        Timestamp timestamp = new Timestamp(date.getTime());
+
+        postDto.setStart(timestamp.getTime());
+        postDto.setEnd(postDto.getDuration() + postDto.getStart());
         //postDto.setSubmissionDate(post.getSubmissionDate(),
-                //userService.getCurrentUser().getPreference().getTimezone());
+
         return postDto;
     }
     private Offer convertToEntity(OfferDTO postDto) throws ParseException {

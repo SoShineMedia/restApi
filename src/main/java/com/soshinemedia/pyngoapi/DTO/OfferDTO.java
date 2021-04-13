@@ -4,6 +4,7 @@ import com.soshinemedia.pyngoapi.domain.OfferType;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigInteger;
 import java.sql.Timestamp;
 
 public class OfferDTO {
@@ -27,12 +28,23 @@ public class OfferDTO {
         @Getter @Setter
         private Boolean pin;
         @Getter @Setter
-        private float duration;
+        private long duration;
         @Getter @Setter
         private int takers;
+        @Getter @Setter
+        private float reward;
 
         @Getter @Setter
         private Long owner_id;
         @Getter @Setter
         private String owner;
+
+        @Getter @Setter
+        private boolean isaccepted;
+        @Getter @Setter
+        private boolean isacceptable;
+        @Getter @Setter
+        private long start;
+        @Getter @Setter
+        private long end;
 }

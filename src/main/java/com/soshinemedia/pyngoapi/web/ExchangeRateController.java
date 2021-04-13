@@ -1,9 +1,15 @@
 package com.soshinemedia.pyngoapi.web;
 
 import com.soshinemedia.pyngoapi.Service.ExchangeRateService;
+import com.soshinemedia.pyngoapi.Service.TransactionService;
 import com.soshinemedia.pyngoapi.domain.ExchangeRate;
+import com.soshinemedia.pyngoapi.repository.ExchangeRateRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
+import java.util.Optional;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -12,7 +18,10 @@ import static org.springframework.http.ResponseEntity.ok;
 public class ExchangeRateController {
 
     private ExchangeRateService exchangeRates;
-
+    @Autowired
+    ExchangeRateRepository exchange;
+    @Autowired
+    TransactionService transactionService;
     //public ExchangeRateController(ExchangeRateRepository exchangeRates) {
     //    this.exchangeRates = exchangeRates;
     //}
@@ -30,7 +39,8 @@ public class ExchangeRateController {
         return ok(n);
     }
     @GetMapping("")
-    public ResponseEntity all() {
-        return ok("success");
+    public ResponseEntity latest() {
+        BigDecimal exchangeRate = this.transactionService.exchangeRate();
+        return ok(exchangeRate);
     }
 }

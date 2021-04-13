@@ -6,6 +6,9 @@ import com.soshinemedia.pyngoapi.domain.Offer;
 import com.soshinemedia.pyngoapi.repository.AcceptanceRepository;
 import com.soshinemedia.pyngoapi.repository.OfferRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,7 +25,9 @@ public class OfferService {
 
     public List<Offer> findAll() {
 
-        Iterable <Offer> it = offerRepository.findAll();
+        Pageable sortedByIdDesc =
+                PageRequest.of(0, 10, Sort.by("id").descending());
+        Iterable <Offer> it = offerRepository.findAll(sortedByIdDesc);
 
         List <Offer>offers = new ArrayList<Offer>();
         it.forEach(e -> offers.add(e));

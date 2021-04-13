@@ -34,10 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
                 .authorizeRequests()
-                .antMatchers("/pyngoapi/signin").permitAll()
-                .antMatchers(HttpMethod.POST,"/pyngoapi/register").permitAll()
+                .antMatchers(HttpMethod.POST,"/rest/signin").permitAll()
+                .antMatchers(HttpMethod.POST,"/rest/register").permitAll()
                 .antMatchers(HttpMethod.GET, "/qr/**").permitAll()
-
+                .antMatchers(HttpMethod.GET, "/v1/rates").permitAll()
                 .antMatchers(HttpMethod.GET, "/vehicles/**").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/vehicles/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, "/v1/offers/**").permitAll()

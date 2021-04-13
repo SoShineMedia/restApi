@@ -4,16 +4,22 @@ import com.soshinemedia.pyngoapi.config.EconomyConfig;
 import com.soshinemedia.pyngoapi.domain.*;
 import com.soshinemedia.pyngoapi.repository.ExchangeRateRepository;
 import com.soshinemedia.pyngoapi.repository.ProfileRepository;
+import com.soshinemedia.pyngoapi.repository.TransactionRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.springframework.http.ResponseEntity.ok;
@@ -30,6 +36,8 @@ public class TransactionService {
     ExchangeRateRepository exchange;
     @Getter @Setter
     private BigDecimal totalPoints;
+    @Autowired
+    TransactionRepository repository;
 
     /*public ResponseEntity<Object> update(@AuthenticationPrincipal UserDetails userDetails, @RequestBody Transaction form) {
 
@@ -64,6 +72,16 @@ public class TransactionService {
         }
 
     }*/
+    public List<Transaction> getAll(String id){
+        Pageable sortedByIdDesc =
+                PageRequest.of(0, 10, Sort.by("id").descending());
+        Iterable <Transaction> it = this.repository.findByFromAddressOrToAddress(id,id,sortedByIdDesc);
+        //Iterable <Offer> it = offerRepository.findAll(sortedByIdDesc);
+        List <Transaction>transactions = new ArrayList<Transaction>();
+        it.forEach(e -> transactions.add(e));
+
+        return transactions;
+    }
     public BigDecimal exchangeRate(){
 
         Optional<ExchangeRate> currentRateOptional = this.exchange.findTopByOrderByIdDesc();

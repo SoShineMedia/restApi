@@ -37,7 +37,7 @@ import java.util.*;
 import static org.springframework.http.ResponseEntity.ok;
 
 @RestController
-@RequestMapping("/pyngoapi")
+@RequestMapping("/rest")
 public class AuthenticationController {
 
     @Autowired
