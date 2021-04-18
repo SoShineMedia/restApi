@@ -1,5 +1,6 @@
 package com.soshinemedia.pyngoapi.domain;
 
 public enum OfferType {
-    SALE
+    REFERAL,
+    VISIT
 }

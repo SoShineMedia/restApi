@@ -36,6 +36,8 @@ public class Transaction {
 
     @Getter @Setter
     private String toAddress;
-
+    public Transaction(TransactionStatus status) {
+         this.status = status;
+    }
 
 }

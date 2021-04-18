@@ -1,9 +1,6 @@
 package com.soshinemedia.pyngoapi.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -20,6 +17,9 @@ public class Acceptance {
 
     private String description;
     private Status status;
+
+    @Setter @Getter
+    private Long progress;
 
     private Timestamp created_at;
     private Timestamp updated_at;

@@ -20,10 +20,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import static java.util.stream.Collectors.toList;
+
 import static org.springframework.http.ResponseEntity.ok;
 
 @RestController()
@@ -65,9 +67,12 @@ public class UserinfoController {
     @PostMapping("/v1/transfer")
     public ResponseEntity<Object> transfer(@AuthenticationPrincipal UserDetails userDetails, @RequestBody Transaction form) {
 
+        if(userDetails.getUsername()== null){
+            return ok("authentication required");
+        }
         User usr = this.user.findByUsername(userDetails.getUsername()).get();
-
         Profile sender = usr.getProfile();
+
         Profile receiver = this.profile.findByAccountNumber(form.getToAddress()).get();
 
         BigDecimal senderNewBalance = sender.getBalance();
@@ -81,6 +86,7 @@ public class UserinfoController {
             receiver.setBalance(receiverNewBalance);
 
             this.profile.save(sender);
+            this.profile.save(receiver);
             Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 
             trans = this.transaction.save(Transaction.builder()
@@ -95,7 +101,7 @@ public class UserinfoController {
             );
             return ok(trans);
         }else{
-            return ok("Insufficient Funds");
+            return ok(new Transaction(TransactionStatus.FAILED));
         }
 
     }
@@ -153,7 +159,7 @@ public class UserinfoController {
 
             return ok(trans);
         }else{
-            return ok("Insufficient Funds");
+            return ok(new Transaction(TransactionStatus.FAILED));
         }
     }
 
@@ -211,7 +217,7 @@ public class UserinfoController {
 
             return ok(trans);
         }else{
-            return ok("Insufficient Funds");
+            return ok(new Transaction(TransactionStatus.FAILED));
         }
 
     }
@@ -230,14 +236,12 @@ public class UserinfoController {
 
     @GetMapping("/v1/user/transactions")
     public ResponseEntity userTransactions(@AuthenticationPrincipal UserDetails userDetails){
-        Map<Object, Object> model = new HashMap<>();
-        model.put("username", userDetails.getUsername());
-        model.put("roles", userDetails.getAuthorities()
-                .stream()
-                .map(a -> ((GrantedAuthority) a).getAuthority())
-                .collect(toList())
-        );
-        return ok(model);
+
+        User usr = this.user.findByUsername(userDetails.getUsername()).get();
+        Profile userProfile = usr.getProfile();
+
+        List<Transaction> userTransactions = this.transactionService.getAll(userProfile.getAccountNumber());
+        return ok(userTransactions);
     }
 
     @GetMapping("/v1/user/exchanges")
