@@ -1,43 +1,42 @@
-2021-04-13 09:18:30.784  WARN 1244 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9h44m16s191ms707µs300ns).
-2021-04-28 11:47:45.427  INFO 28876 --- [main] com.soshinemedia.pyngoapi.Application    : Starting Application on ABLWKenroy with PID 28876 (G:\app\target\classes started by KenroyWhite in G:\app)
-2021-04-28 11:47:45.431  INFO 28876 --- [main] com.soshinemedia.pyngoapi.Application    : No active profile set, falling back to default profiles: default
-2021-04-28 11:47:47.180  INFO 28876 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
-2021-04-28 11:47:47.372  INFO 28876 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 180ms. Found 6 repository interfaces.
-2021-04-28 11:47:48.053  INFO 28876 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$321d7e27] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-04-28 11:47:48.084  INFO 28876 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.hateoas.config.HateoasConfiguration' of type [org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$b19dcb59] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
-2021-04-28 11:47:49.049  INFO 28876 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2021-04-28 11:47:49.087  INFO 28876 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2021-04-28 11:47:49.087  INFO 28876 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
-2021-04-28 11:47:49.321  INFO 28876 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2021-04-28 11:47:49.322  INFO 28876 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 3812 ms
-2021-04-28 11:47:49.754  INFO 28876 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2021-04-28 11:47:50.012  INFO 28876 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2021-04-28 11:47:50.137  INFO 28876 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+2021-07-17 17:47:12.636  INFO 21532 --- [main] com.soshinemedia.pyngoapi.Application    : Starting Application on ABLWKenroy with PID 21532 (G:\app\target\classes started by KenroyWhite in G:\app)
+2021-07-17 17:47:12.662  INFO 21532 --- [main] com.soshinemedia.pyngoapi.Application    : No active profile set, falling back to default profiles: default
+2021-07-17 17:47:14.861  INFO 21532 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2021-07-17 17:47:15.059  INFO 21532 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 184ms. Found 6 repository interfaces.
+2021-07-17 17:47:15.753  INFO 21532 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$f5c8056a] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-07-17 17:47:15.786  INFO 21532 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.hateoas.config.HateoasConfiguration' of type [org.springframework.hateoas.config.HateoasConfiguration$$EnhancerBySpringCGLIB$$7548529c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2021-07-17 17:47:16.931  INFO 21532 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-07-17 17:47:16.976  INFO 21532 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-07-17 17:47:16.977  INFO 21532 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2021-07-17 17:47:17.299  INFO 21532 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-07-17 17:47:17.300  INFO 21532 --- [main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 4532 ms
+2021-07-17 17:47:17.773  INFO 21532 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-07-17 17:47:18.071  INFO 21532 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-07-17 17:47:18.230  INFO 21532 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
 	name: default
 	...]
-2021-04-28 11:47:50.231  INFO 28876 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
-2021-04-28 11:47:50.233  INFO 28876 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
-2021-04-28 11:47:50.409  INFO 28876 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
-2021-04-28 11:47:50.671  INFO 28876 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
-2021-04-28 11:47:50.729  INFO 28876 --- [main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000421: Disabling contextual LOB creation as hibernate.jdbc.lob.non_contextual_creation is true
-2021-04-28 11:47:51.911  INFO 28876 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2021-04-28 11:47:53.465  INFO 28876 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
-2021-04-28 11:47:54.243 DEBUG 28876 --- [main] eGlobalAuthenticationAutowiredConfigurer : Eagerly initializing {org.springframework.boot.autoconfigure.security.servlet.WebSecurityEnablerConfiguration=org.springframework.boot.autoconfigure.security.servlet.WebSecurityEnablerConfiguration$$EnhancerBySpringCGLIB$$4faca85c@301b89e1}
-2021-04-28 11:47:54.407 DEBUG 28876 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/rest/signin', POST]
-2021-04-28 11:47:54.409 DEBUG 28876 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/rest/register', POST]
-2021-04-28 11:47:54.409 DEBUG 28876 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/qr/**', GET]
-2021-04-28 11:47:54.409 DEBUG 28876 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/v1/rates', GET]
-2021-04-28 11:47:54.410 DEBUG 28876 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/vehicles/**', GET]
-2021-04-28 11:47:54.410 DEBUG 28876 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'hasRole('ROLE_ADMIN')', for Ant [pattern='/vehicles/**', DELETE]
-2021-04-28 11:47:54.410 DEBUG 28876 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/v1/offers/**', GET]
-2021-04-28 11:47:54.411 DEBUG 28876 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/v1/**', GET]
-2021-04-28 11:47:54.411 DEBUG 28876 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/swagger-ui/**', GET]
-2021-04-28 11:47:54.411 DEBUG 28876 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/v3/api-docs/**', GET]
-2021-04-28 11:47:54.411 DEBUG 28876 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/swagger-ui.html', GET]
-2021-04-28 11:47:54.412 DEBUG 28876 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'authenticated', for any request
-2021-04-28 11:47:54.422 DEBUG 28876 --- [main] o.s.s.w.a.i.FilterSecurityInterceptor    : Validated configuration attributes
-2021-04-28 11:47:54.423 DEBUG 28876 --- [main] o.s.s.w.a.i.FilterSecurityInterceptor    : Validated configuration attributes
-2021-04-28 11:47:54.430  INFO 28876 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4e301795, org.springframework.security.web.context.SecurityContextPersistenceFilter@28df2da8, org.springframework.security.web.header.HeaderWriterFilter@324ee3ca, org.springframework.web.filter.CorsFilter@7b1a9ab3, org.springframework.security.web.authentication.logout.LogoutFilter@62a78446, com.soshinemedia.pyngoapi.security.jwt.JwtTokenAuthenticationFilter@605c2b9f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@57e2d15c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@61868687, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7bfedff3, org.springframework.security.web.session.SessionManagementFilter@12e3cf1c, org.springframework.security.web.access.ExceptionTranslationFilter@46c47690, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3db48e6]
-2021-04-28 11:47:54.629  INFO 28876 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2021-04-28 11:47:54.634  INFO 28876 --- [main] com.soshinemedia.pyngoapi.Application    : Started Application in 9.952 seconds (JVM running for 10.685)
-2021-04-28 11:47:54.672  INFO 28876 --- [main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2021-07-17 17:47:18.374  INFO 21532 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2021-07-17 17:47:18.377  INFO 21532 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2021-07-17 17:47:18.609  INFO 21532 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2021-07-17 17:47:18.884  INFO 21532 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2021-07-17 17:47:18.953  INFO 21532 --- [main] o.h.e.j.e.i.LobCreatorBuilderImpl        : HHH000421: Disabling contextual LOB creation as hibernate.jdbc.lob.non_contextual_creation is true
+2021-07-17 17:47:20.422  INFO 21532 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-07-17 17:47:22.336  INFO 21532 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-07-17 17:47:23.301 DEBUG 21532 --- [main] eGlobalAuthenticationAutowiredConfigurer : Eagerly initializing {org.springframework.boot.autoconfigure.security.servlet.WebSecurityEnablerConfiguration=org.springframework.boot.autoconfigure.security.servlet.WebSecurityEnablerConfiguration$$EnhancerBySpringCGLIB$$13572f9f@730611a0}
+2021-07-17 17:47:23.520 DEBUG 21532 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/rest/signin', POST]
+2021-07-17 17:47:23.522 DEBUG 21532 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/rest/register', POST]
+2021-07-17 17:47:23.523 DEBUG 21532 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/qr/**', GET]
+2021-07-17 17:47:23.523 DEBUG 21532 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/v1/rates', GET]
+2021-07-17 17:47:23.523 DEBUG 21532 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/vehicles/**', GET]
+2021-07-17 17:47:23.523 DEBUG 21532 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'hasRole('ROLE_ADMIN')', for Ant [pattern='/vehicles/**', DELETE]
+2021-07-17 17:47:23.524 DEBUG 21532 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/v1/offers/**', GET]
+2021-07-17 17:47:23.524 DEBUG 21532 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/v1/**', GET]
+2021-07-17 17:47:23.524 DEBUG 21532 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/swagger-ui/**', GET]
+2021-07-17 17:47:23.525 DEBUG 21532 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/v3/api-docs/**', GET]
+2021-07-17 17:47:23.525 DEBUG 21532 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'permitAll', for Ant [pattern='/swagger-ui.html', GET]
+2021-07-17 17:47:23.525 DEBUG 21532 --- [main] edFilterInvocationSecurityMetadataSource : Adding web access control expression 'authenticated', for any request
+2021-07-17 17:47:23.542 DEBUG 21532 --- [main] o.s.s.w.a.i.FilterSecurityInterceptor    : Validated configuration attributes
+2021-07-17 17:47:23.544 DEBUG 21532 --- [main] o.s.s.w.a.i.FilterSecurityInterceptor    : Validated configuration attributes
+2021-07-17 17:47:23.556  INFO 21532 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@12e04531, org.springframework.security.web.context.SecurityContextPersistenceFilter@455591ad, org.springframework.security.web.header.HeaderWriterFilter@15d0f2a3, org.springframework.web.filter.CorsFilter@6114902c, org.springframework.security.web.authentication.logout.LogoutFilter@1ce07709, com.soshinemedia.pyngoapi.security.jwt.JwtTokenAuthenticationFilter@16baf8d0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5a919251, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@23e54c8a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@217abcc9, org.springframework.security.web.session.SessionManagementFilter@409b1740, org.springframework.security.web.access.ExceptionTranslationFilter@6ad2cb6d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4e301795]
+2021-07-17 17:47:23.774  INFO 21532 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-07-17 17:47:23.797  INFO 21532 --- [main] com.soshinemedia.pyngoapi.Application    : Started Application in 12.299 seconds (JVM running for 13.478)
+2021-07-17 17:47:23.846  INFO 21532 --- [main] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
